@@ -51,3 +51,7 @@ export interface Champion {
   partype: string;
   stats: ChampionStats;
 }
+
+export interface ChampionTable {
+  [key: string]: Champion;
+}

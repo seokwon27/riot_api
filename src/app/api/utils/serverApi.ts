@@ -1,5 +1,7 @@
 "use server";
 
+import { Champion, ChampionTable } from "@/types/champion";
+
 //버전정보
 const getVersion = async (): Promise<string> => {
   const res = await fetch("https://ddragon.leagueoflegends.com/api/versions.json").then((data) =>
@@ -9,11 +11,11 @@ const getVersion = async (): Promise<string> => {
 };
 
 //챔피언 데이터(ISR)
-export const getChampionsData = async (): Promise<object | undefined> => {
+export const getChampionsData = async (): Promise<Champion[]> => {
   try {
     const version = await getVersion();
 
-    const res = await fetch(
+    const res: { type: string; format: string; version: string; data: ChampionTable } = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion.json`,
       {
         next: {
@@ -23,8 +25,13 @@ export const getChampionsData = async (): Promise<object | undefined> => {
     ).then((data) => data.json());
     // console.log(res.data);
 
-    return res.data;
+    const data: Champion[] = Object.values(res.data).map((value) => {
+      return value;
+    });
+
+    return data;
   } catch (error) {
     console.error("챔피언 api 에러", error);
   }
+  return [];
 };
