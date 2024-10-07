@@ -44,7 +44,7 @@ export default function RootLayout({
             로테이션
           </Link>
         </nav>
-        <div className="pt-[64px] justify-center">{children}</div>
+        <div className="pt-[64px] flex justify-center">{children}</div>
       </body>
     </html>
   );

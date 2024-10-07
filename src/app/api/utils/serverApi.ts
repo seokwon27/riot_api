@@ -30,7 +30,9 @@ export const getChampionsData = async () => {
     const newData: Champion[] = Object.values(data.data).map((value) => {
       return value;
     });
-    return newData;
+    return newData.sort((a: Champion, b: Champion) =>
+      a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+    );
   } catch (error) {
     console.error("챔피언 api 에러", error);
   }
