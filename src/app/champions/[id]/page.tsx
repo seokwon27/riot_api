@@ -115,19 +115,24 @@ const detailPage = async ({ params }: { params: { id: string } }) => {
           <div className="flex flex-col text-center">
             <div className="font-bold text-6xl text-white">스킬</div>
             <div className="flex gap-3 justify-around mt-6">
-              <div>
+              <div className="flex flex-col items-center max-w-[220px] border-[1px] rounded-lg p-3">
                 <img
                   src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/passive/${champion.passive.image.full}`}
                 />
                 <p className="text-white mt-3">{champion.passive.name}</p>
+                <p className="text-white mt-3">{champion.passive.description}</p>
               </div>
               {champion.spells.map((spell) => {
                 return (
-                  <div key={spell.id}>
+                  <div
+                    key={spell.id}
+                    className="flex flex-col items-center max-w-[220px] border-[1px] rounded-lg p-3"
+                  >
                     <img
                       src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/spell/${spell.image.full}`}
                     />
                     <p className="text-white mt-3">{spell.name}</p>
+                    <p className="text-white mt-3">{spell.description}</p>
                   </div>
                 );
               })}
