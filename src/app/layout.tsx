@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <nav className="flex flex-row gap-20 justify-around bg-sky-900 p-5 fixed w-[100%]">
+        <nav className="flex flex-row gap-20 justify-around bg-slate-700 p-5 fixed w-[100%] shadow shadow-black ">
           <Link className="link-style" href={"/"}>
             홈
           </Link>
@@ -44,7 +44,7 @@ export default function RootLayout({
             로테이션
           </Link>
         </nav>
-        <div className="pt-[64px] flex justify-center">{children}</div>
+        <div className="pt-[64px] flex flex-col justify-center">{children}</div>
       </body>
     </html>
   );

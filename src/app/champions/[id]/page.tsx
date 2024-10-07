@@ -39,9 +39,9 @@ const detailPage = async ({ params }: { params: { id: string } }) => {
   // console.log("챔피언 디테일", champion);
 
   return (
-    <>
+    <div className="bg-zinc-950">
       <div
-        className="h-screen max-w-[1920px] w-[100%]"
+        className="h-screen max-w-[1920px] w-[100%] m-auto"
         style={{
           backgroundImage: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg)`,
           backgroundSize: "cover",
@@ -95,14 +95,48 @@ const detailPage = async ({ params }: { params: { id: string } }) => {
               <div className="text-center border-[1px] border-amber-200 p-[8px] w-[130px] h-[130px]">
                 <div className=" bg-white/25 text-xs w-[112px] h-[112px] flex flex-col justify-center items-center gap-1">
                   <div className="text-white">난이도</div>
-                  <div className="text-titlecolor">쉬움</div>
+                  <div className="text-titlecolor">
+                    {champion.info.difficulty < 4
+                      ? "낮음"
+                      : champion.info.difficulty < 7
+                      ? "보통"
+                      : champion.info.difficulty < 9
+                      ? "높음"
+                      : "매우 높음"}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+      <div className=" bg-skillBgColor h-[800px] max-w-[1920px] w-[100%] m-auto content-center">
+        <div className="flex flex-col gap-2 mx-[160px] px-[48px]">
+          <div className="flex flex-col text-center">
+            <div className="font-bold text-6xl text-white">스킬</div>
+            <div className="flex gap-3 justify-around mt-6">
+              <div>
+                <img
+                  src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/passive/${champion.passive.image.full}`}
+                />
+                <p className="text-white mt-3">{champion.passive.name}</p>
+              </div>
+              {champion.spells.map((spell) => {
+                return (
+                  <div key={spell.id}>
+                    <img
+                      src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/spell/${spell.image.full}`}
+                    />
+                    <p className="text-white mt-3">{spell.name}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
   );
 };
 

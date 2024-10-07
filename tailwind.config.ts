@@ -12,6 +12,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         titlecolor: "rgb(200, 170, 110)",
+        skillBgColor: "rgb(10,20,40)",
       },
     },
   },

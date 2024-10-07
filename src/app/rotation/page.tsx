@@ -59,7 +59,7 @@ const RotationPage = () => {
   }, [championKeys, champions]);
 
   return (
-    <div className="p-5  w-[100%] max-w-[1920px]">
+    <div className="p-5  w-[100%] max-w-[1920px] m-auto">
       <div>
         <p className="text-center font-bold text-3xl text-red-500">로테이션 챔피언</p>
         {/* 로테이션챔피언 */}
