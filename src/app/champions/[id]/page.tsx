@@ -39,7 +39,7 @@ const detailPage = async ({ params }: { params: { id: string } }) => {
   // console.log("챔피언 디테일", champion);
 
   return (
-    <div className="bg-zinc-950">
+    <div>
       <div
         className="h-screen max-w-[1920px] w-[100%] m-auto"
         style={{

@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950`}>
         <nav className="flex justify-around bg-slate-700 p-5 sticky top-0 w-[100%]  max-w-[1920px] m-auto shadow shadow-black ">
           <Link className="link-style" href={"/"}>
             홈
@@ -44,7 +44,7 @@ export default function RootLayout({
             로테이션
           </Link>
         </nav>
-        <div className="flex flex-col justify-center ">{children}</div>
+        <div className="flex flex-col justify-center items-center">{children}</div>
         <footer className="p-5 w-[100%] max-w-[1920px] m-auto bg-slate-800 text-xs text-slate-400 ">
           <div>
             <p>스파르타 내일배움 캠프 | 주특기 플러스주차 개인과제</p>

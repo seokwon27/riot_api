@@ -74,7 +74,7 @@ const RotationPage = () => {
                   <Link href={`/champions/${champion.id}`}>
                     <img src={imageurl} />
                   </Link>
-                  <div>{champion.name}</div>
+                  <div className="text-titlecolor">{champion.name}</div>
                 </div>
               );
             })}
@@ -95,7 +95,7 @@ const RotationPage = () => {
                   <Link href={`/champions/${champion.id}`}>
                     <img src={imageurl} />
                   </Link>
-                  <div>{champion.name}</div>
+                  <div className="text-titlecolor">{champion.name}</div>
                 </div>
               );
             })}
