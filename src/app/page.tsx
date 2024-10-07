@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="pt-[64px] w-[100%] max-w-[1920px] m-auto flex flex-col items-center text-center">
+    <div className="py-[64px] w-[100%] max-w-[1920px] m-auto flex flex-col items-center text-center">
       <div className="text-4xl text-slate-700">리그 오브 레전드 백과사전</div>
       <div className="m-5">Riot Games API를 사용하여 챔피언과 아이템 정보를 제공합니다. </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-12">
         <Link href={"/champions"}>
           <div>
             <Image alt="champions_link" src={`/poro2.jpg`} width={600} height={400} />
