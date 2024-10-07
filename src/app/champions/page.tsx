@@ -11,7 +11,7 @@ const championPage = async () => {
   // });
 
   return (
-    <div>
+    <div className="p-5">
       <div>챔피언페이지</div>
       <div className="grid grid-cols-5 gap-4 items-center">
         {datas.map((champion: Champion) => {

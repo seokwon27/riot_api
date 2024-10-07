@@ -1,6 +1,23 @@
 import { getChampionDetail } from "@/app/api/utils/serverApi";
-import { ChampionDetail } from "@/types/champion";
+import { Metadata } from "next";
 import React from "react";
+
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = params.id;
+
+  const data = await getChampionDetail(id);
+  const champion = data[id];
+
+  return {
+    title: champion.name,
+  };
+}
 
 const detailPage = async ({ params }: { params: { id: string } }) => {
   // const championDetail = await getChampionDetail(params.id)

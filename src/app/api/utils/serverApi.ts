@@ -1,6 +1,7 @@
 "use server";
 
-import { Champion, ChampionTable } from "@/types/champion";
+import { Champion, ChampionDetailTable, ChampionTable } from "@/types/champion";
+import { Item, ItemsData } from "@/types/items";
 
 //버전정보
 const getVersion = async (): Promise<string> => {
@@ -11,27 +12,63 @@ const getVersion = async (): Promise<string> => {
 };
 
 //챔피언 데이터(ISR)
-export const getChampionsData = async (): Promise<Champion[]> => {
+export const getChampionsData = async () => {
   try {
     const version = await getVersion();
 
-    const res: { type: string; format: string; version: string; data: ChampionTable } = await fetch(
+    const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion.json`,
       {
         next: {
-          revalidate: 60,
+          revalidate: 86400,
         },
       }
-    ).then((data) => data.json());
-    // console.log(res.data);
+    );
+    const data: ChampionTable = await res.json();
 
-    const data: Champion[] = Object.values(res.data).map((value) => {
+    //배열형태로 전환 후 리턴
+    const newData: Champion[] = Object.values(data.data).map((value) => {
       return value;
     });
-
-    return data;
+    return newData;
   } catch (error) {
     console.error("챔피언 api 에러", error);
+  }
+  return [];
+};
+
+//챔피언 상세정보
+export const getChampionDetail = async (id: string): Promise<ChampionDetailTable> => {
+  try {
+    const version = await getVersion();
+    const res = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
+    );
+    const data = await res.json();
+    const value: ChampionDetailTable = data.data;
+
+    return value;
+  } catch (error) {
+    console.error(error);
+  }
+  return {};
+};
+
+// 아이템 정보
+export const getItemsData = async () => {
+  try {
+    const version = await getVersion();
+
+    const res = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`
+    );
+
+    const data: ItemsData = await res.json();
+
+    const items: Item[] = Object.values(data.data).map((value) => value);
+    return items;
+  } catch (error) {
+    console.error(error);
   }
   return [];
 };
