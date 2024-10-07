@@ -12,8 +12,8 @@ const championPage = async () => {
 
   return (
     <div className="p-5 w-[100%] max-w-[1920px] m-auto">
-      <div>챔피언페이지</div>
-      <div className="grid grid-cols-5 gap-4 items-center">
+      <div className="text-center font-bold text-3xl text-red-500">챔피언페이지</div>
+      <div className="grid grid-cols-5 gap-4 items-center mt-6">
         {datas.map((champion: Champion) => {
           const imageurl = `https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`;
           return (

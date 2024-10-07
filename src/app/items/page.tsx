@@ -4,9 +4,9 @@ import { getItemsData } from "../api/utils/serverApi";
 const itemsPage = async () => {
   const items = await getItemsData();
   return (
-    <div className="p-6">
-      <div>아이템 목록</div>
-      <div className="grid grid-cols-6 gap-2">
+    <div className="p-5">
+      <div className="text-center font-bold text-3xl text-red-500">아이템 목록</div>
+      <div className="p-5 grid grid-cols-6 gap-2">
         {items.map((item) => {
           return (
             <div key={`${item.name}-${item.image.full}`} className="border-2 rounded-lg  p-4">

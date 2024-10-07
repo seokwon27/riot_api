@@ -44,7 +44,7 @@ export default function RootLayout({
             로테이션
           </Link>
         </nav>
-        <div className="pt-[64px] flex flex-col justify-center ">{children}</div>
+        <div className="flex flex-col justify-center ">{children}</div>
         <footer className="p-5 w-[100%] max-w-[1920px] m-auto bg-slate-800 text-xs text-slate-400 ">
           <div>
             <p>스파르타 내일배움 캠프 | 주특기 플러스주차 개인과제</p>
