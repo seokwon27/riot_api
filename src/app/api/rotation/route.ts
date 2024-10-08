@@ -9,6 +9,9 @@ export async function GET() {
         "X-Riot-Token": API_KEY || "",
       },
     });
+    if (!res.ok) {
+      throw new Error("로테이션 정보 확인 실패");
+    }
     // console.log(API_KEY);
 
     const data: ChampionRotation = await res.json();

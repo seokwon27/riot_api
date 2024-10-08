@@ -8,6 +8,9 @@ const getVersion = async (): Promise<string> => {
   const res = await fetch("https://ddragon.leagueoflegends.com/api/versions.json").then((data) =>
     data.json()
   );
+  if (!res.ok) {
+    throw new Error("버전정보 확인 실패");
+  }
   return res[0];
 };
 
@@ -24,6 +27,9 @@ export const getChampionsData = async () => {
         },
       }
     );
+    if (!res.ok) {
+      throw new Error("챔피언데이터 확인 실패");
+    }
     const data: ChampionTable = await res.json();
 
     //배열형태로 전환 후 리턴
@@ -46,6 +52,9 @@ export const getChampionDetail = async (id: string): Promise<ChampionDetailTable
     const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
     );
+    if (!res.ok) {
+      throw new Error("상세정보 확인 실패");
+    }
     const data = await res.json();
     const value: ChampionDetailTable = data.data;
 
@@ -65,6 +74,9 @@ export const getItemsData = async () => {
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`
     );
 
+    if (!res.ok) {
+      throw new Error("아이템정보 확인 실패");
+    }
     const data: ItemsData = await res.json();
 
     const items: Item[] = Object.values(data.data).map((value) => value);
